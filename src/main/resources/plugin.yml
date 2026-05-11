@@ -1,0 +1,10 @@
+name: QTotems
+description: $description
+prefix: QTokens
+version: '1.0'
+
+main: dev.parrotstudios.qTotems.QTotems
+api-version: '1.21.11'
+load: POSTWORLD
+
+authors: [ Qssaf ]
