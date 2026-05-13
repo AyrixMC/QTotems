@@ -1,6 +1,5 @@
-package dev.parrotstudios.qTotems.config;
+package dev.parrotstudios.qtotems.config;
 
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,11 +12,13 @@ public class ConfigManager {
 
     public static void init(JavaPlugin plugin) {
         ConfigManager.plugin = plugin;
+        plugin.saveDefaultConfig();
         config = plugin.getConfig();
     }
 
     public static void reloadConfig() {
         plugin.reloadConfig();
+        plugin.saveDefaultConfig();
         config = plugin.getConfig();
     }
 
@@ -75,6 +76,7 @@ public class ConfigManager {
 
     public static void save(){
         plugin.saveConfig();
+        plugin.reloadConfig();
         config = plugin.getConfig();
     }
 

@@ -1,9 +1,9 @@
-package dev.parrotstudios.qTotems;
+package dev.parrotstudios.qtotems;
 
-import dev.parrotstudios.qTotems.command.QTotemsCommand;
-import dev.parrotstudios.qTotems.config.ConfigManager;
-import dev.parrotstudios.qTotems.listener.EventListener;
-import dev.parrotstudios.qTotems.totems.QTotemRegistry;
+import dev.parrotstudios.qtotems.command.QTotemsCommand;
+import dev.parrotstudios.qtotems.config.ConfigManager;
+import dev.parrotstudios.qtotems.listener.EventListener;
+import dev.parrotstudios.qtotems.totem.QTotemRegistry;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;

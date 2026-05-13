@@ -1,10 +1,10 @@
-package dev.parrotstudios.qTotems.command;
+package dev.parrotstudios.qtotems.command;
 
-import dev.parrotstudios.qTotems.QTotems;
-import dev.parrotstudios.qTotems.config.ConfigManager;
-import dev.parrotstudios.qTotems.totems.QTotem;
-import dev.parrotstudios.qTotems.totems.QTotemRegistry;
-import dev.parrotstudios.qTotems.utils.Utils;
+import dev.parrotstudios.qtotems.QTotems;
+import dev.parrotstudios.qtotems.config.ConfigManager;
+import dev.parrotstudios.qtotems.totem.QTotem;
+import dev.parrotstudios.qtotems.totem.QTotemRegistry;
+import dev.parrotstudios.qtotems.utils.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

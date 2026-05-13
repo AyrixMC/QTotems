@@ -1,7 +1,7 @@
-package dev.parrotstudios.qTotems.totems;
+package dev.parrotstudios.qtotems.totem;
 
-import dev.parrotstudios.qTotems.QTotems;
-import dev.parrotstudios.qTotems.utils.Utils;
+import dev.parrotstudios.qtotems.QTotems;
+import dev.parrotstudios.qtotems.utils.Utils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -15,6 +15,7 @@ import org.bukkit.Registry;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("UnusedReturnValue")
 public class QTotem {
     private final String name;
     private final ItemStack totemItem;
@@ -89,12 +90,16 @@ public class QTotem {
     }
 
     public void provideEquipEffects(Player player){
-        this.getEquipEffects().forEach((type, level) -> player.addPotionEffect(new PotionEffect(type, 40, level)));
+        this.getEquipEffects().forEach((type, level) -> player.addPotionEffect(new PotionEffect(type, Integer.MAX_VALUE, level)));
     }
 
     public void providePopEffects(Player player){
         this.getPopEffects().forEach(popEffect ->
                 player.addPotionEffect(new PotionEffect(popEffect.type, popEffect.duration, popEffect.level)));
+    }
+
+    public void removeEquipEffects(Player player){
+        this.getEquipEffects().forEach((type, _) -> player.removePotionEffect(type));
     }
 
     public void register(){

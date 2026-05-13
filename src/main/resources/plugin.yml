@@ -1,9 +1,9 @@
 name: QTotems
 description: $description
-prefix: QTokens
+prefix: QTotems
 version: '1.0'
 
-main: dev.parrotstudios.qTotems.QTotems
+main: dev.parrotstudios.qtotems.QTotems
 api-version: '1.21.11'
 load: POSTWORLD
 

@@ -1,9 +1,9 @@
-package dev.parrotstudios.qTotems.utils;
+package dev.parrotstudios.qtotems.utils;
 
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import dev.parrotstudios.qTotems.config.ConfigManager;
+import dev.parrotstudios.qtotems.config.ConfigManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
