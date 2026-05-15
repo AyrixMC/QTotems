@@ -12,8 +12,10 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.Registry;
-import java.util.HashMap;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @SuppressWarnings("UnusedReturnValue")
 public class QTotem {
@@ -21,9 +23,9 @@ public class QTotem {
     private final ItemStack totemItem;
     private final ItemMeta totemMeta;
     private final NamespacedKey key;
-    private final HashMap<PotionEffectType, Integer> equipEffects = new HashMap<>();
-    public record PopEffect(PotionEffectType type, int level, int duration) {}
-    private final List<PopEffect> popEffects = new java.util.ArrayList<>();
+
+    private static final List<PotionEffect> equipEffects = new ArrayList<>();
+    private static final List<PotionEffect> popEffects = new ArrayList<>();
     public static QTotem create(String name){
         return new QTotem(name);
     }
@@ -50,11 +52,11 @@ public class QTotem {
         return totemItem.clone();
     }
 
-    public HashMap<PotionEffectType, Integer> getEquipEffects() {
-        return new HashMap<>(equipEffects);
+    public List<PotionEffect> getEquipEffects() {
+        return List.copyOf(equipEffects);
     }
 
-    public List<PopEffect> getPopEffects() {
+    public List<PotionEffect> getPopEffects() {
         return List.copyOf(popEffects);
     }
 
@@ -75,7 +77,7 @@ public class QTotem {
             QTotems.getInstance().getLogger().warning("Invalid pop effect name: " + potionEffectName + " for totem: " + this.getName());
             return this;
         }
-        equipEffects.put(type, level);
+        equipEffects.add(new PotionEffect(type, Integer.MAX_VALUE, level));
         return this;
     }
 
@@ -85,21 +87,24 @@ public class QTotem {
             QTotems.getInstance().getLogger().warning("Invalid pop effect name: " + potionEffectName + " for totem: " + this.getName());
             return this;
         }
-        popEffects.add(new PopEffect(type, level, duration));
+        popEffects.add(new PotionEffect(type, duration, level));
         return this;
     }
 
     public void provideEquipEffects(Player player){
-        this.getEquipEffects().forEach((type, level) -> player.addPotionEffect(new PotionEffect(type, Integer.MAX_VALUE, level)));
+        this.getEquipEffects().forEach(player::addPotionEffect);
     }
 
     public void providePopEffects(Player player){
-        this.getPopEffects().forEach(popEffect ->
-                player.addPotionEffect(new PotionEffect(popEffect.type, popEffect.duration, popEffect.level)));
+        this.getPopEffects().forEach(player::addPotionEffect);
     }
 
     public void removeEquipEffects(Player player){
-        this.getEquipEffects().forEach((type, _) -> player.removePotionEffect(type));
+        this.getEquipEffects().forEach(effect -> {
+            if(!player.hasPotionEffect(effect.getType())) return;
+            if(Objects.requireNonNull(player.getPotionEffect(effect.getType())).getAmplifier() > effect.getAmplifier()) return;
+            player.removePotionEffect(effect.getType());
+        });
     }
 
     public void register(){

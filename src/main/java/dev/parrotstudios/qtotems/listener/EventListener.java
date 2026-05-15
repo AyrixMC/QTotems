@@ -1,10 +1,13 @@
 package dev.parrotstudios.qtotems.listener;
 
+import dev.parrotstudios.qtotems.QTotems;
 import dev.parrotstudios.qtotems.totem.QTotemRegistry;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.entity.EntityResurrectEvent;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -52,6 +55,14 @@ public class EventListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         QTotemRegistry.handleJoin(event.getPlayer());
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onEffectRemove(EntityPotionEffectEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (event.getAction() != EntityPotionEffectEvent.Action.CLEARED && event.getAction() != EntityPotionEffectEvent.Action.REMOVED) return;
+        QTotemRegistry.handleEffectChange(player);
+
     }
 
 }

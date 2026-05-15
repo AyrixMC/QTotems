@@ -37,7 +37,6 @@ public class QTotemRegistry {
         QTotem active = activePlayerEquips.get(player.getUniqueId());
 
         if (active != null) {
-
             active.removeEquipEffects(player);
         }
         activePlayerEquips.remove(player.getUniqueId());
@@ -62,7 +61,6 @@ public class QTotemRegistry {
         if(!isQTotem(stack)) {
             return;
         }
-
         Optional<QTotem> qTotem = qTotems.stream().filter(qTotem1 -> {
             PersistentDataContainer pdc = stack.getItemMeta().getPersistentDataContainer();
             return pdc.has(qTotem1.getKey(), PersistentDataType.BOOLEAN);
@@ -82,7 +80,6 @@ public class QTotemRegistry {
         clearPastEffects(player);
         ItemStack stack = player.getInventory().getItemInOffHand();
         if(!isQTotem(stack)) {
-            activePlayerEquips.remove(player.getUniqueId());
             return;
         }
         Optional<QTotem> qTotem = qTotems.stream().filter(qTotem1 -> {
@@ -93,6 +90,24 @@ public class QTotemRegistry {
         qTotem.get().provideEquipEffects(player);
         activePlayerEquips.put(player.getUniqueId(), qTotem.get());
 
+    }
+
+    public static void handleEffectChange(Player player){
+        activePlayerEquips.remove(player.getUniqueId());
+        QTotems.getInstance().getServer().getScheduler().runTaskLater(QTotems.getInstance(),()->{
+            ItemStack stack = player.getInventory().getItemInOffHand();
+            if(!isQTotem(stack)) {
+                return;
+            }
+            Optional<QTotem> qTotem = qTotems.stream().filter(qTotem1 -> {
+                PersistentDataContainer pdc = stack.getItemMeta().getPersistentDataContainer();
+                return pdc.has(qTotem1.getKey(), PersistentDataType.BOOLEAN);
+            }).findFirst();
+            if(qTotem.isEmpty()) return;
+            QTotems.getInstance().getServer().getScheduler().runTaskLater(QTotems.getInstance(),()->
+                    qTotem.get().provideEquipEffects(player),1L);
+            activePlayerEquips.put(player.getUniqueId(), qTotem.get());
+        },1L);
     }
 
     public static QTotem getTotem(String totemName){
@@ -116,7 +131,7 @@ public class QTotemRegistry {
                     totem.addEquipEffect(split[0].toLowerCase(), Integer.parseInt(split[1]));
                 });
                 totem.register();
-                QTotems.getInstance().getLogger().warning("Registered Qtotem: "+ qTotem);
+                QTotems.getInstance().getLogger().info("Registered Qtotem: "+ qTotem);
             } catch (Exception e) {
                 QTotems.getInstance().getLogger().warning("Invalid configuration for Qtotem: "+ qTotem);
                 e.printStackTrace();
