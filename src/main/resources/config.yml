@@ -3,18 +3,18 @@ prefix: "<dark_red>[<red><bold>QTotems</bold></red>]</dark_red> "
 totems:
   crystal:
     enabled: true
-    name: "<light_purple><bold>CRYSTAL TOTEM</bold></light_purple>"
+    name: "<!italic><light_purple><bold>CRYSTAL TOTEM</bold></light_purple>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<light_purple><bold>Pop Effects (On Use):</bold></light_purple>"
+      - "<!italic><light_purple><bold>Pop Effects (On Use):</bold></light_purple>"
       - "<!italic>🚀 <white>Absorption I</white></!italic> <gray>[<red>15s</red>]</gray>"
       - "<!italic>🛡 <white>Resistance I</white></!italic> <gray>[<aqua>12s</aqua>]</gray>"
       - ""
-      - "<light_purple><bold>Equip Effects (While Held):</bold></light_purple>"
+      - "<!italic><light_purple><bold>Equip Effects (While Held):</bold></light_purple>"
       - "<!italic>🛡 <white>Resistance I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
     amount: 1
@@ -26,18 +26,18 @@ totems:
 
   fire:
     enabled: true
-    name: "<red><bold>FIRE TOTEM</bold></red>"
+    name: "<!italic><red><bold>FIRE TOTEM</bold></red>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<red><bold>Pop Effects (On Use):</bold></red>"
+      - "<!italic><red><bold>Pop Effects (On Use):</bold></red>"
       - "<!italic>🔥 <white>Fire Resistance I</white></!italic> <gray>[<gold>30s</gold>]</gray>"
       - "<!italic>⚔ <white>Strength I</white></!italic> <gray>[<red>10s</red>]</gray>"
       - ""
-      - "<red><bold>Equip Effects (While Held):</bold></red>"
+      - "<!italic><red><bold>Equip Effects (While Held):</bold></red>"
       - "<!italic>🔥 <white>Fire Resistance I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
     amount: 1
@@ -49,18 +49,18 @@ totems:
 
   ice:
     enabled: true
-    name: "<aqua><bold>ICE TOTEM</bold></aqua>"
+    name: "<!italic><aqua><bold>ICE TOTEM</bold></aqua>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<aqua><bold>Pop Effects (On Use):</bold></aqua>"
+      - "<!italic><aqua><bold>Pop Effects (On Use):</bold></aqua>"
       - "<!italic>⚡ <white>Speed I</white></!italic> <gray>[<aqua>15s</aqua>]</gray>"
       - "<!italic>🪶 <white>Slow Falling I</white></!italic> <gray>[<aqua>12s</aqua>]</gray>"
       - ""
-      - "<aqua><bold>Equip Effects (While Held):</bold></aqua>"
+      - "<!italic><aqua><bold>Equip Effects (While Held):</bold></aqua>"
       - "<!italic>⚡ <white>Speed I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
     amount: 1
@@ -72,19 +72,19 @@ totems:
 
   warrior:
     enabled: true
-    name: "<gold><bold>WARRIOR TOTEM</bold></gold>"
+    name: "<!italic><gold><bold>WARRIOR TOTEM</bold></gold>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<gold><bold>Pop Effects (On Use):</bold></gold>"
+      - "<!italic><gold><bold>Pop Effects (On Use):</bold></gold>"
       - "<!italic>⚔ <white>Strength II</white></!italic> <gray>[<red>15s</red>]</gray>"
       - "<!italic>🚀 <white>Absorption I</white></!italic> <gray>[<red>15s</red>]</gray>"
       - "<!italic>💚 <white>Regeneration I</white></!italic> <gray>[<light_purple>15s</light_purple>]</gray>"
       - ""
-      - "<gold><bold>Equip Effects (While Held):</bold></gold>"
+      - "<!italic><gold><bold>Equip Effects (While Held):</bold></gold>"
       - "<!italic>⚔ <white>Strength I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
     amount: 1
@@ -97,18 +97,18 @@ totems:
 
   nature:
     enabled: true
-    name: "<green><bold>NATURE TOTEM</bold></green>"
+    name: "<!italic><green><bold>NATURE TOTEM</bold></green>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<green><bold>Pop Effects (On Use):</bold></green>"
+      - "<!italic><green><bold>Pop Effects (On Use):</bold></green>"
       - "<!italic>💚 <white>Regeneration II</white></!italic> <gray>[<light_purple>15s</light_purple>]</gray>"
       - "<!italic>🍖 <white>Saturation I</white></!italic> <gray>[<yellow>30s</yellow>]</gray>"
       - ""
-      - "<green><bold>Equip Effects (While Held):</bold></green>"
+      - "<!italic><green><bold>Equip Effects (While Held):</bold></green>"
       - "<!italic>💚 <white>Regeneration I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
     amount: 1
@@ -120,19 +120,19 @@ totems:
 
   time:
     enabled: true
-    name: "<yellow><bold>TIME TOTEM</bold></yellow>"
+    name: "<!italic><yellow><bold>TIME TOTEM</bold></yellow>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<yellow><bold>Pop Effects (On Use):</bold></yellow>"
+      - "<!italic><yellow><bold>Pop Effects (On Use):</bold></yellow>"
       - "<!italic>⚡ <white>Speed II</white></!italic> <gray>[<aqua>20s</aqua>]</gray>"
       - "<!italic>⛏ <white>Haste II</white></!italic> <gray>[<gold>20s</gold>]</gray>"
       - "<!italic>🪶 <white>Slow Falling I</white></!italic> <gray>[<aqua>20s</aqua>]</gray>"
       - ""
-      - "<yellow><bold>Equip Effects (While Held):</bold></yellow>"
+      - "<!italic><yellow><bold>Equip Effects (While Held):</bold></yellow>"
       - "<!italic>⛏ <white>Haste I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
     amount: 1
@@ -145,20 +145,20 @@ totems:
 
   dragon:
     enabled: true
-    name: "<dark_purple><bold>DRAGON TOTEM</bold></dark_purple>"
+    name: "<!italic><dark_purple><bold>DRAGON TOTEM</bold></dark_purple>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<dark_purple><bold>Pop Effects (On Use):</bold></dark_purple>"
+      - "<!italic><dark_purple><bold>Pop Effects (On Use):</bold></dark_purple>"
       - "<!italic>🔥 <white>Fire Resistance I</white></!italic> <gray>[<gold>30s</gold>]</gray>"
       - "<!italic>⚔ <white>Strength II</white></!italic> <gray>[<red>30s</red>]</gray>"
       - "<!italic>🛡 <white>Resistance I</white></!italic> <gray>[<aqua>30s</aqua>]</gray>"
       - "<!italic>⬆ <white>Levitation I</white></!italic> <gray>[<light_purple>10s</light_purple>]</gray>"
       - ""
-      - "<dark_purple><bold>Equip Effects (While Held):</bold></dark_purple>"
+      - "<!italic><dark_purple><bold>Equip Effects (While Held):</bold></dark_purple>"
       - "<!italic>🔥 <white>Fire Resistance I</white></!italic>"
       - "<!italic>⚔ <white>Strength I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
@@ -174,19 +174,19 @@ totems:
 
   guardian:
     enabled: true
-    name: "<dark_aqua><bold>GUARDIAN TOTEM</bold></dark_aqua>"
+    name: "<!italic><dark_aqua><bold>GUARDIAN TOTEM</bold></dark_aqua>"
     lore:
-      - "<gray>Custom Totem</gray>"
+      - "<!italic><gray>Custom Totem</gray>"
       - ""
       - "<!italic><white>This is a custom totem with abilities</white>"
       - "<!italic><white>use it wisely!</white>"
       - ""
-      - "<dark_aqua><bold>Pop Effects (On Use):</bold></dark_aqua>"
+      - "<!italic><dark_aqua><bold>Pop Effects (On Use):</bold></dark_aqua>"
       - "<!italic>🛡 <white>Resistance II</white></!italic> <gray>[<aqua>30s</aqua>]</gray>"
       - "<!italic>🚀 <white>Absorption II</white></!italic> <gray>[<red>30s</red>]</gray>"
       - "<!italic>🐬 <white>Dolphin's Grace I</white></!italic> <gray>[<blue>30s</blue>]</gray>"
       - ""
-      - "<dark_aqua><bold>Equip Effects (While Held):</bold></dark_aqua>"
+      - "<!italic><dark_aqua><bold>Equip Effects (While Held):</bold></dark_aqua>"
       - "<!italic>🛡 <white>Resistance I</white></!italic>"
       - "<!italic>🐬 <white>Dolphin's Grace I</white></!italic>"
     material: "TOTEM_OF_UNDYING"
@@ -202,8 +202,8 @@ totems:
 messages:
   onlyPlayers: "<red>Only players can use this command!"
   usage: "<yellow>Usage: /qtotems <totem> {player}"
-  reloaded: "<green>Reloaded config!"
+  reloaded: "<green>Config has been reloaded successfully!</green>"
   invalidTotem: "<red>Invalid totem!"
-  gaveSelf: "<green>Gave you a custom totem!"
-  gaveTarget: "<green>Gave %target% a custom totem!"
+  gaveSelf: "<green>Gave you a custom totem!</green>"
+  gaveTarget: "<green>Gave %target% a custom totem!</green>"
   invalidTarget: "<red>Invalid target!"

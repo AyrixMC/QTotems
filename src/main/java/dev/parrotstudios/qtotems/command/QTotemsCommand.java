@@ -98,7 +98,7 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
      */
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
                 ConfigManager.reloadConfig();
                 QTotemRegistry.reload();
@@ -108,7 +108,6 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(Utils.textWithPrefix(msgOnlyPlayers()));
             return true;
         }
-        Player player = (Player) sender;
         if(args.length == 0 || args.length > 2) {
             player.sendMessage(Utils.textWithPrefix(msgUsage()));
             return true;
@@ -137,6 +136,11 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
         }
         if(target == null){
             player.sendMessage(Utils.textWithPrefix(msgInvalidTarget()));
+            return true;
+        }
+        if(target == player){
+            player.getInventory().addItem(totem.getTotemItem());
+            player.sendMessage(Utils.textWithPrefix(msgGaveSelf()));
             return true;
         }
 
