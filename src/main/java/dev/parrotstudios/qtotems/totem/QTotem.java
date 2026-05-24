@@ -28,8 +28,8 @@ public class QTotem {
     private final ItemMeta totemMeta;
     private final NamespacedKey key;
 
-    private static final List<PotionEffect> equipEffects = new ArrayList<>();
-    private static final List<PotionEffect> popEffects = new ArrayList<>();
+    private final List<PotionEffect> equipEffects = new ArrayList<>();
+    private final List<PotionEffect> popEffects = new ArrayList<>();
 
     /**
      * Factory method to create a new QTotem instance.
@@ -140,7 +140,7 @@ public class QTotem {
             QTotems.getInstance().getLogger().warning("Invalid pop effect name: " + potionEffectName + " for totem: " + this.getName());
             return this;
         }
-        equipEffects.add(new PotionEffect(type, Integer.MAX_VALUE, level));
+        equipEffects.add(new PotionEffect(type, Integer.MAX_VALUE, level,false,false,false));
         return this;
     }
 
@@ -158,7 +158,7 @@ public class QTotem {
             QTotems.getInstance().getLogger().warning("Invalid pop effect name: " + potionEffectName + " for totem: " + this.getName());
             return this;
         }
-        popEffects.add(new PotionEffect(type, duration, level));
+        popEffects.add(new PotionEffect(type, duration, level,false,false,true));
         return this;
     }
 

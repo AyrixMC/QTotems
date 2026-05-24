@@ -34,7 +34,7 @@ public final class QTotems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EventListener(), this);
         Objects.requireNonNull(getCommand("totems")).setExecutor(new QTotemsCommand());
         QTotemRegistry.populate();
-        getLogger().info("Plugins is enabled.");
+        getLogger().info("Plugin has been enabled.");
     }
 
     /**
@@ -43,6 +43,6 @@ public final class QTotems extends JavaPlugin {
      */
     @Override
     public void onDisable() {
-        getLogger().info("Plugins is disabled.");
+        getLogger().info("Plugin has been disabled.");
     }
 }
