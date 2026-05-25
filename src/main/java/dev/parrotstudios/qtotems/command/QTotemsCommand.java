@@ -60,7 +60,7 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
                     sender.sendMessage(Utils.textWithPrefix(msgOnlyPlayers()));
                     return true;
                 }
-                sender.sendMessage(Utils.textWithPrefix(msgUsage()));
+                sender.sendMessage(Utils.textWithPrefix(msgInvalidTotem()));
                 return true;
             }
             if (args.length == 2) {
