@@ -74,7 +74,7 @@ public class ConfigManager {
         config.set(path, value);
     }
 
-    public static void save(){
+    public static void save() {
         plugin.saveConfig();
         plugin.reloadConfig();
         config = plugin.getConfig();

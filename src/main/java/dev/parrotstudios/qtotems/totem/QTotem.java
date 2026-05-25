@@ -5,13 +5,15 @@ import dev.parrotstudios.qtotems.utils.Utils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.Registry;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +29,7 @@ public class QTotem {
     private final List<PotionEffect> equipEffects = new ArrayList<>();
     private final List<PotionEffect> popEffects = new ArrayList<>();
 
-    public static QTotem create(String name){
-        return new QTotem(name);
-    }
-
-    private QTotem(String name){
+    private QTotem(String name) {
         this.name = name;
         totemItem = new ItemStack(Material.TOTEM_OF_UNDYING);
         totemMeta = totemItem.getItemMeta();
@@ -40,74 +38,79 @@ public class QTotem {
         totemMeta.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
     }
 
-    public String getName() {
+    public static QTotem create(String name) {
+        return new QTotem(name);
+    }
+
+    public @NotNull String getName() {
         return name;
     }
 
-    public NamespacedKey getKey() {
+    public @NotNull NamespacedKey getKey() {
         return key;
     }
 
-    public ItemStack getTotemItem(){
+    public @NotNull ItemStack getTotemItem() {
         return totemItem.clone();
     }
 
-    public List<PotionEffect> getEquipEffects() {
+    public @Nullable List<PotionEffect> getEquipEffects() {
         return List.copyOf(equipEffects);
     }
 
-    public List<PotionEffect> getPopEffects() {
+    public @Nullable List<PotionEffect> getPopEffects() {
         return List.copyOf(popEffects);
     }
 
-    public QTotem displayName(String name){
+    public QTotem displayName(String name) {
         totemMeta.displayName(Utils.text(name));
         return this;
     }
 
-    public QTotem lore(List<String> lore){
+    public QTotem lore(List<String> lore) {
         List<Component> loreFormat = lore.stream().map(Utils::text).toList();
         totemMeta.lore(loreFormat);
         return this;
     }
 
-    public QTotem addEquipEffect(String potionEffectName, int level){
+    public QTotem addEquipEffect(String potionEffectName, int level) {
         PotionEffectType type = Registry.POTION_EFFECT_TYPE.get(NamespacedKey.minecraft(potionEffectName));
-        if(type == null){
+        if (type == null) {
             QTotems.getInstance().getLogger().warning("Invalid pop effect name: " + potionEffectName + " for totem: " + this.getName());
             return this;
         }
-        equipEffects.add(new PotionEffect(type, Integer.MAX_VALUE, level,false,false,true));
+        equipEffects.add(new PotionEffect(type, Integer.MAX_VALUE, level, false, false, true));
         return this;
     }
 
-    public QTotem addPopEffect(String potionEffectName, int level, int duration){
+    public QTotem addPopEffect(String potionEffectName, int level, int duration) {
         PotionEffectType type = Registry.POTION_EFFECT_TYPE.get(NamespacedKey.minecraft(potionEffectName));
-        if(type == null){
+        if (type == null) {
             QTotems.getInstance().getLogger().warning("Invalid pop effect name: " + potionEffectName + " for totem: " + this.getName());
             return this;
         }
-        popEffects.add(new PotionEffect(type, duration, level,false,false,true));
+        popEffects.add(new PotionEffect(type, duration, level, false, false, true));
         return this;
     }
 
-    public void provideEquipEffects(Player player){
+    public void provideEquipEffects(Player player) {
         this.getEquipEffects().forEach(player::addPotionEffect);
     }
 
-    public void providePopEffects(Player player){
+    public void providePopEffects(Player player) {
         this.getPopEffects().forEach(player::addPotionEffect);
     }
 
-    public void removeEquipEffects(Player player){
+    public void removeEquipEffects(Player player) {
         this.getEquipEffects().forEach(effect -> {
-            if(!player.hasPotionEffect(effect.getType())) return;
-            if(Objects.requireNonNull(player.getPotionEffect(effect.getType())).getAmplifier() > effect.getAmplifier()) return;
+            if (!player.hasPotionEffect(effect.getType())) return;
+            if (Objects.requireNonNull(player.getPotionEffect(effect.getType())).getAmplifier() > effect.getAmplifier())
+                return;
             player.removePotionEffect(effect.getType());
         });
     }
 
-    public void register(){
+    public void register() {
         totemItem.setItemMeta(totemMeta);
         QTotemRegistry.add(this);
     }

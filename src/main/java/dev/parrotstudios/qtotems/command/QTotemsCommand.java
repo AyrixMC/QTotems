@@ -55,22 +55,47 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(Utils.textWithPrefix(msgReloaded()));
                 return true;
             }
-            sender.sendMessage(Utils.textWithPrefix(msgOnlyPlayers()));
+            if (args.length == 1) {
+                if (QTotemRegistry.getTotem(args[0]) != null) {
+                    sender.sendMessage(Utils.textWithPrefix(msgOnlyPlayers()));
+                    return true;
+                }
+                sender.sendMessage(Utils.textWithPrefix(msgUsage()));
+                return true;
+            }
+            if (args.length == 2) {
+                QTotem totem = QTotemRegistry.getTotem(args[0]);
+                Player target = QTotems.getInstance().getServer().getPlayer(args[1]);
+                if (totem == null) {
+                    sender.sendMessage(Utils.textWithPrefix(msgInvalidTotem()));
+                    return true;
+                }
+                if (target == null) {
+                    sender.sendMessage(Utils.textWithPrefix(msgInvalidTarget()));
+                    return true;
+                }
+                target.getInventory().addItem(totem.getTotemItem());
+                target.sendMessage(Utils.textWithPrefix(msgGaveSelf()));
+                sender.sendMessage(Utils.textWithPrefix(msgGaveTarget(target.getName())));
+                return true;
+
+            }
+            sender.sendMessage(Utils.textWithPrefix(msgUsage()));
             return true;
         }
-        if(args.length == 0 || args.length > 2) {
+        if (args.length == 0 || args.length > 2) {
             player.sendMessage(Utils.textWithPrefix(msgUsage()));
             return true;
         }
-        if(args.length == 1){
-            if(args[0].equalsIgnoreCase("reload")){
+        if (args.length == 1) {
+            if (args[0].equalsIgnoreCase("reload")) {
                 ConfigManager.reloadConfig();
                 QTotemRegistry.reload();
                 player.sendMessage(Utils.textWithPrefix(msgReloaded()));
                 return true;
             }
             QTotem totem = QTotemRegistry.getTotem(args[0]);
-            if(totem == null) {
+            if (totem == null) {
                 player.sendMessage(Utils.textWithPrefix(msgInvalidTotem()));
                 return true;
             }
@@ -80,15 +105,15 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
         }
         QTotem totem = QTotemRegistry.getTotem(args[0]);
         Player target = QTotems.getInstance().getServer().getPlayer(args[1]);
-        if(totem == null) {
+        if (totem == null) {
             player.sendMessage(Utils.textWithPrefix(msgInvalidTotem()));
             return true;
         }
-        if(target == null){
+        if (target == null) {
             player.sendMessage(Utils.textWithPrefix(msgInvalidTarget()));
             return true;
         }
-        if(target == player){
+        if (target == player) {
             player.getInventory().addItem(totem.getTotemItem());
             player.sendMessage(Utils.textWithPrefix(msgGaveSelf()));
             return true;
@@ -102,14 +127,14 @@ public class QTotemsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        if(args.length == 1){
+        if (args.length == 1) {
             return QTotemRegistry.getTotemNames()
                     .stream()
                     .filter(totemName -> totemName.toLowerCase().startsWith(args[0].toLowerCase()))
                     .toList();
         }
-        if(args.length == 2){
-            if(!QTotemRegistry.getTotemNames().contains(args[0].toLowerCase())) return List.of();
+        if (args.length == 2) {
+            if (!QTotemRegistry.getTotemNames().contains(args[0].toLowerCase())) return List.of();
             return QTotems.getInstance().getServer().getOnlinePlayers().stream().map(Player::getName).filter(name -> name.toLowerCase().startsWith(args[1].toLowerCase())).toList();
         }
         return List.of();

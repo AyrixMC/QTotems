@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public final class QTotems extends JavaPlugin {
 
-    public static QTotems getInstance(){
+    public static QTotems getInstance() {
         return JavaPlugin.getPlugin(QTotems.class);
     }
 
